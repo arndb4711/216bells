@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>216 Bells – Traditional Ship's Clock</title>
-  <meta name="description" content="216 Bells is a beautifully crafted ship's clock for iPhone. Ship's bells, compass, tides, weather and sunrise — all in one maritime instrument." />
+  <title>216 Bells – Traditionelle Schiffsuhr</title>
+  <meta name="description" content="216 Bells ist eine Schiffsuhr für iPhone mit Glasen, Kompass, Gezeiten und Wetter." />
   <style>
     :root {
       --navy:  #0A1628;
@@ -18,28 +18,30 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: var(--navy);
-      color: var(--text);
-      line-height: 1.7;
-    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--navy); color: var(--text); line-height: 1.7; }
 
-    /* ── Nav ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10,22,40,0.92);
-      backdrop-filter: blur(10px);
+      background: rgba(10,22,40,0.92); backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2rem; height: 56px;
     }
     .nav-brand { color: var(--gold); font-size: 1.1rem; letter-spacing: .08em; text-decoration: none; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: .9rem; letter-spacing: .04em; transition: color .2s; }
     .nav-links a:hover { color: var(--gold); }
+    .lang-switch { display: flex; gap: 4px; }
+    .lang-btn {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--muted); font-family: -apple-system, sans-serif;
+      font-size: .78rem; font-weight: 600; letter-spacing: .04em;
+      padding: 3px 9px; border-radius: 4px; cursor: pointer; transition: all .2s;
+    }
+    .lang-btn:hover { color: var(--gold); border-color: var(--gold); }
+    .lang-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); }
 
-    /* ── Hero ── */
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -51,260 +53,299 @@
       background: linear-gradient(145deg, #1a3060, var(--navy));
       border: 2px solid var(--border);
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 2rem;
-      box-shadow: 0 8px 40px rgba(200,162,64,.15);
-      font-size: 3.5rem;
+      margin-bottom: 2rem; box-shadow: 0 8px 40px rgba(200,162,64,.15); font-size: 3.5rem;
     }
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      color: var(--gold2);
-      letter-spacing: .06em;
-      margin-bottom: .5rem;
-    }
-    .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--muted);
-      letter-spacing: .04em;
-      margin-bottom: 2.5rem;
-      font-style: italic;
-    }
+    .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); color: var(--gold2); letter-spacing: .06em; margin-bottom: .5rem; }
+    .hero-sub { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--muted); letter-spacing: .04em; margin-bottom: 2.5rem; font-style: italic; }
     .badge-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .badge {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--navy);
-      padding: .65rem 1.8rem;
-      border-radius: 6px;
-      font-size: .95rem;
-      font-family: -apple-system, sans-serif;
-      font-weight: 600;
-      letter-spacing: .02em;
-      text-decoration: none;
-      transition: background .2s;
-    }
+    .badge { display: inline-block; background: var(--gold); color: var(--navy); padding: .65rem 1.8rem; border-radius: 6px; font-size: .95rem; font-family: -apple-system, sans-serif; font-weight: 600; letter-spacing: .02em; text-decoration: none; transition: background .2s; }
     .badge:hover { background: var(--gold2); }
-    .badge.outline {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-    }
+    .badge.outline { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
     .badge.outline:hover { background: rgba(200,162,64,.1); }
 
-    /* ── Sections ── */
     section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
-    .divider {
-      width: 60px; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 0 auto 3rem;
-    }
-    h2 {
-      text-align: center;
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      color: var(--gold);
-      letter-spacing: .08em;
-      margin-bottom: 1rem;
-    }
+    .divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto 3rem; }
+    h2 { text-align: center; font-size: clamp(1.5rem, 4vw, 2rem); color: var(--gold); letter-spacing: .08em; margin-bottom: 1rem; }
+    h3 { color: var(--gold); font-size: 1rem; margin-bottom: .4rem; }
 
-    /* ── Features ── */
     .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-    .feature-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
+    .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
     .feature-icon { font-size: 1.8rem; margin-bottom: .75rem; }
-    .feature-card h3 { color: var(--gold); font-size: 1rem; letter-spacing: .04em; margin-bottom: .4rem; }
+    .feature-card h3 { letter-spacing: .04em; }
     .feature-card p { color: var(--muted); font-size: .9rem; line-height: 1.6; }
 
-    /* ── Screenshots placeholder ── */
-    .screens {
-      display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem;
-    }
-    .screen-placeholder {
-      width: 200px; height: 360px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: .8rem; font-family: sans-serif;
-    }
+    .prose p { color: var(--text); margin-bottom: 1rem; font-size: .95rem; }
+    .prose h3 { margin-top: 1.75rem; margin-bottom: .4rem; }
+    .prose ul { margin: .5rem 0 1rem 1.5rem; color: var(--muted); font-size: .9rem; }
+    .prose ul li { margin-bottom: .25rem; }
+    .prose a { color: var(--gold); }
+    .prose em { color: var(--muted); }
+    .prose strong { color: var(--text); }
 
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      text-align: center; padding: 2rem;
-      color: var(--muted); font-size: .85rem;
-    }
+    .impressum-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
+    .impressum-box p { color: var(--muted); font-size: .92rem; line-height: 1.8; }
+    .impressum-box .label { color: var(--gold); font-size: .8rem; letter-spacing: .06em; display: block; margin-bottom: .2rem; }
+
+    footer { border-top: 1px solid var(--border); text-align: center; padding: 2rem; color: var(--muted); font-size: .85rem; }
     footer a { color: var(--gold); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-    }
+    .lang-en { display: none; }
+    body.en .lang-de { display: none; }
+    body.en .lang-en { display: revert; }
+
+    @media (max-width: 600px) { .nav-links { display: none; } }
   </style>
 </head>
-<body>
+<body class="de">
 
 <nav>
-  <a class="nav-brand" href="#">⚓ 216 Bells</a>
-  <ul class="nav-links">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#privacy">Privacy</a></li>
-    <li><a href="#support">Support</a></li>
-  </ul>
+  <a class="nav-brand" href="#">&#9875; 216 Bells</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#features" class="lang-de">Funktionen</a><a href="#features" class="lang-en">Features</a></li>
+      <li><a href="#privacy"  class="lang-de">Datenschutz</a><a href="#privacy"  class="lang-en">Privacy</a></li>
+      <li><a href="#support"  class="lang-de">Support</a><a href="#support"  class="lang-en">Support</a></li>
+      <li><a href="#impressum">Impressum</a></li>
+    </ul>
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn"        id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
 </nav>
 
-<!-- ── Hero ── -->
+<!-- Hero -->
 <section class="hero">
-  <div class="hero-icon">⚓</div>
+  <div class="hero-icon">&#9875;</div>
   <h1>216 Bells</h1>
-  <p class="hero-sub">A Traditional Ship's Clock for iPhone</p>
+  <p class="hero-sub lang-de">Eine traditionelle Schiffsuhr f&uuml;r iPhone</p>
+  <p class="hero-sub lang-en">A Traditional Ship&#x27;s Clock for iPhone</p>
   <div class="badge-row">
-    <a class="badge" href="#" id="appstore-link">Download on the App Store</a>
-    <a class="badge outline" href="#features">Discover Features</a>
+    <a class="badge" href="#" id="appstore-link">
+      <span class="lang-de">Im App Store laden</span>
+      <span class="lang-en">Download on the App Store</span>
+    </a>
+    <a class="badge outline" href="#features">
+      <span class="lang-de">Funktionen entdecken</span>
+      <span class="lang-en">Discover Features</span>
+    </a>
   </div>
 </section>
 
-<!-- ── Features ── -->
+<!-- Features -->
 <section id="features">
-  <h2>Features</h2>
+  <h2 class="lang-de">Funktionen</h2>
+  <h2 class="lang-en">Features</h2>
   <div class="divider"></div>
   <div class="features">
     <div class="feature-card">
-      <div class="feature-icon">🔔</div>
-      <h3>Ship's Bells</h3>
-      <p>Classic half-hour bell strikes following the traditional 4-hour watch system. Notifications even when the app is closed.</p>
+      <div class="feature-icon">&#128276;</div>
+      <h3 class="lang-de">Glasen</h3><h3 class="lang-en">Ship&#x27;s Bells</h3>
+      <p class="lang-de">Klassische Halbstunden-Schl&auml;ge im traditionellen 4-Stunden-Wachsystem. Benachrichtigungen auch bei geschlossener App.</p>
+      <p class="lang-en">Classic half-hour bell strikes in the traditional 4-hour watch system. Notifications even when the app is closed.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🧭</div>
-      <h3>Vintage Compass</h3>
-      <p>Live heading from your iPhone's compass, displayed in a dark minimalist nautical rose with cardinal directions.</p>
+      <div class="feature-icon">&#129517;</div>
+      <h3 class="lang-de">Vintage-Kompass</h3><h3 class="lang-en">Vintage Compass</h3>
+      <p class="lang-de">Live-Peilung auf einer dunklen, minimalistischen Windrose mit Himmelsrichtungen.</p>
+      <p class="lang-en">Live heading on a dark, minimalist nautical rose with cardinal directions.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🕐</div>
-      <h3>Brass Chronometer</h3>
-      <p>A beautifully crafted analog clock in the style of 19th-century ship's chronometers, with Roman numerals and slender lozenge hands.</p>
+      <div class="feature-icon">&#128336;</div>
+      <h3 class="lang-de">Messingchronometer</h3><h3 class="lang-en">Brass Chronometer</h3>
+      <p class="lang-de">Analoguhr im Stil des 19. Jahrhunderts mit r&ouml;mischen Ziffern und schlanken Zeigern.</p>
+      <p class="lang-en">Analog clock in 19th-century style with Roman numerals and slender lozenge hands.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🌊</div>
-      <h3>Tide Prediction</h3>
-      <p>Local harmonic tidal calculation for 14 major ports — no API required, works completely offline.</p>
+      <div class="feature-icon">&#127754;</div>
+      <h3 class="lang-de">Gezeitenvorhersage</h3><h3 class="lang-en">Tide Prediction</h3>
+      <p class="lang-de">Harmonische Gezeitenberechnung f&uuml;r 14 H&auml;fen &mdash; komplett offline, kein Server.</p>
+      <p class="lang-en">Harmonic tidal calculation for 14 major ports &mdash; fully offline, no API required.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🌤</div>
-      <h3>Marine Weather</h3>
-      <p>Wind speed &amp; direction (with Beaufort scale), temperature, pressure with trend, and weather condition — updated for your position.</p>
+      <div class="feature-icon">&#127780;</div>
+      <h3 class="lang-de">Marinewetter</h3><h3 class="lang-en">Marine Weather</h3>
+      <p class="lang-de">Wind &amp; Richtung (Beaufort), Temperatur, Luftdruck mit Trend &mdash; standortgenau.</p>
+      <p class="lang-en">Wind &amp; direction (Beaufort), temperature, pressure with trend &mdash; location-accurate.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🌅</div>
-      <h3>Sunrise &amp; Sunset</h3>
-      <p>A visual wave arc shows the arc of the sun through the day and night cycle. Accurate to the minute using the NOAA solar algorithm.</p>
+      <div class="feature-icon">&#127749;</div>
+      <h3 class="lang-de">Sonnenauf- &amp; -untergang</h3><h3 class="lang-en">Sunrise &amp; Sunset</h3>
+      <p class="lang-de">Wellenkurve zeigt den Sonnenbogen. Minutengenaue Berechnung nach dem NOAA-Algorithmus.</p>
+      <p class="lang-en">Wave arc shows the solar arc. Accurate to the minute using the NOAA solar algorithm.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🕰</div>
-      <h3>UTC Clock</h3>
-      <p>Always-visible UTC time alongside your local chronometer — essential for celestial navigation and maritime communications.</p>
+      <div class="feature-icon">&#128336;</div>
+      <h3>UTC</h3>
+      <p class="lang-de">Immer sichtbare UTC-Zeit neben dem Chronometer &mdash; unerl&auml;sslich f&uuml;r Navigation und Seefunk.</p>
+      <p class="lang-en">Always-visible UTC time alongside your chronometer &mdash; essential for navigation and maritime radio.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🆘</div>
-      <h3>SOS Signal</h3>
-      <p>Hold the clock face for 3 seconds to send an SOS light signal in Morse code. Automatic stop after 5 minutes.</p>
+      <div class="feature-icon">&#128682;</div>
+      <h3>SOS</h3>
+      <p class="lang-de">Zifferblatt 3 Sekunden halten f&uuml;r SOS-Morsesignal. Automatischer Stopp nach 5 Minuten.</p>
+      <p class="lang-en">Hold clock face 3 seconds for SOS Morse light signal. Auto-stops after 5 minutes.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🌐</div>
-      <h3>Deutsch / English</h3>
-      <p>Full bilingual support. Switch between German and English in the app settings at any time.</p>
+      <div class="feature-icon">&#127758;</div>
+      <h3 class="lang-de">Deutsch &amp; Englisch</h3><h3 class="lang-en">German &amp; English</h3>
+      <p class="lang-de">Vollst&auml;ndige Zweisprachigkeit, jederzeit in den Einstellungen umschaltbar.</p>
+      <p class="lang-en">Full bilingual support, switchable at any time in the app settings.</p>
     </div>
   </div>
 </section>
 
-<!-- ── Privacy ── -->
+<!-- Privacy -->
 <section id="privacy">
-  <h2>Privacy Policy</h2>
+  <h2 class="lang-de">Datenschutzerkl&auml;rung</h2>
+  <h2 class="lang-en">Privacy Policy</h2>
   <div class="divider"></div>
 
-  <p><em>Last updated: June 2026</em></p>
-  <br/>
+  <div class="prose lang-de">
+    <p><em>Zuletzt aktualisiert: Juni 2026</em></p>
+    <h3>Verantwortlicher</h3>
+    <p>Arnd Brockmeier &bull; Am Mertenshof 56, 50859 K&ouml;ln &bull; <a href="mailto:216bells@arndb.net">216bells@arndb.net</a></p>
+    <h3>Standortdaten</h3>
+    <p>Die App fragt nach dem Ger&auml;testandort (<em>nur w&auml;hrend der Nutzung</em>) f&uuml;r:</p>
+    <ul>
+      <li>Anzeige des Kompasskurses und der Koordinaten</li>
+      <li>Abruf lokaler Wetterdaten von Open-Meteo (nur Lat/Lon, keine Personendaten)</li>
+      <li>Auswahl der n&auml;chsten Gezeitenreferenzstation</li>
+      <li>Berechnung von Sonnenauf- und -untergang</li>
+    </ul>
+    <p><strong>Standortdaten werden weder gespeichert, noch an Dritte weitergegeben, noch f&uuml;r Werbung genutzt.</strong></p>
+    <h3>Wetterdaten</h3>
+    <p>Wetterdaten kommen von <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>. Es werden ausschlie&szlig;lich Breiten- und L&auml;ngengrad &uuml;bermittelt. Es sind keine Konto- oder Personendaten erforderlich.</p>
+    <h3>Benachrichtigungen</h3>
+    <p>Lokale Benachrichtigungen f&uuml;r Glasen-Schl&auml;ge werden ausschlie&szlig;lich auf Ihrem Ger&auml;t generiert. Keine &Uuml;bertragung an externe Server.</p>
+    <h3>Datenspeicherung</h3>
+    <p>Alle Einstellungen werden lokal auf Ihrem Ger&auml;t gespeichert (iOS UserDefaults). Keine Daten verlassen Ihr Ger&auml;t.</p>
+    <h3>Drittanbieter</h3>
+    <p>Die App nutzt die Open-Meteo API (<a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">Nutzungsbedingungen</a>). Es sind keine Analyse-, Werbe- oder Tracking-SDKs eingebunden.</p>
+    <h3>Minderj&auml;hrige</h3>
+    <p>Die App richtet sich nicht an Kinder unter 13 Jahren.</p>
+    <h3>&Auml;nderungen</h3>
+    <p>&Auml;nderungen werden auf dieser Seite mit aktualisiertem Datum ver&ouml;ffentlicht.</p>
+    <h3>Kontakt</h3>
+    <p><a href="mailto:216bells@arndb.net">216bells@arndb.net</a></p>
+  </div>
 
-  <p><strong style="color:var(--gold)">216 Bells</strong> ("the App") is developed by Arnd Brockmeier as a personal project. Your privacy is important. This policy explains what data the App accesses and how it is handled.</p>
-  <br/>
-
-  <h3 style="color:var(--gold);margin-bottom:.5rem;">Location Data</h3>
-  <p>The App requests access to your device's location (<em>While Using the App</em>) for the following purposes only:</p>
-  <ul style="margin:1rem 0 1rem 1.5rem;color:var(--muted);">
-    <li>Displaying your current compass heading and coordinates</li>
-    <li>Fetching local weather data from the Open-Meteo API (latitude &amp; longitude only, no personal identifiers)</li>
-    <li>Selecting the nearest tidal reference station</li>
-    <li>Calculating local sunrise and sunset times</li>
-  </ul>
-  <p><strong>Location data is never stored on any server, never shared with third parties, and never used for advertising or tracking.</strong></p>
-  <br/>
-
-  <h3 style="color:var(--gold);margin-bottom:.5rem;">Weather Data</h3>
-  <p>Weather information is fetched from <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>, a free and open-source weather API. Only your latitude and longitude are transmitted. No account, API key, or personal information is required or sent.</p>
-  <br/>
-
-  <h3 style="color:var(--gold);margin-bottom:.5rem;">Notifications</h3>
-  <p>With your permission, the App schedules local notifications for ship's bell strikes. These notifications are generated and stored entirely on your device. No notification data is transmitted to any server.</p>
-  <br/>
-
-  <h3 style="color:var(--gold);margin-bottom:.5rem;">Data Storage</h3>
-  <p>All settings (quiet hours, language preference, SOS color) are stored locally on your device using iOS standard storage (UserDefaults). No data leaves your device.</p>
-  <br/>
-
-  <h3 style="color:var(--gold);margin-bottom:.5rem;">Third-Party Services</h3>
-  <p>The App uses the Open-Meteo API (<a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">terms</a>). No analytics, advertising, or tracking SDKs are included.</p>
-  <br/>
-
-  <h3 style="color:var(--gold);margin-bottom:.5rem;">Children's Privacy</h3>
-  <p>The App does not knowingly collect information from children under 13.</p>
-  <br/>
-
-  <h3 style="color:var(--gold);margin-bottom:.5rem;">Changes to This Policy</h3>
-  <p>Any updates to this privacy policy will be posted on this page with a revised date.</p>
-  <br/>
-
-  <h3 style="color:var(--gold);margin-bottom:.5rem;">Contact</h3>
-  <p>Questions about this privacy policy? Contact us at <a href="mailto:216bells@arndb.net">216bells@arndb.net</a>.</p>
+  <div class="prose lang-en">
+    <p><em>Last updated: June 2026</em></p>
+    <h3>Controller</h3>
+    <p>Arnd Brockmeier &bull; Am Mertenshof 56, 50859 K&ouml;ln, Germany &bull; <a href="mailto:216bells@arndb.net">216bells@arndb.net</a></p>
+    <h3>Location Data</h3>
+    <p>The App requests device location (<em>while using the app</em>) for:</p>
+    <ul>
+      <li>Displaying compass heading and coordinates</li>
+      <li>Fetching local weather from Open-Meteo (lat/lon only, no personal identifiers)</li>
+      <li>Selecting the nearest tidal reference station</li>
+      <li>Calculating sunrise and sunset times</li>
+    </ul>
+    <p><strong>Location data is never stored on servers, never shared with third parties, and never used for advertising.</strong></p>
+    <h3>Weather Data</h3>
+    <p>Weather is fetched from <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>. Only latitude and longitude are transmitted. No account or personal data is required.</p>
+    <h3>Notifications</h3>
+    <p>Local bell notifications are generated and stored entirely on your device. No data is transmitted to any server.</p>
+    <h3>Data Storage</h3>
+    <p>All settings are stored locally on your device (iOS UserDefaults). No data leaves your device.</p>
+    <h3>Third-Party Services</h3>
+    <p>The App uses the Open-Meteo API (<a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">terms</a>). No analytics, advertising, or tracking SDKs are included.</p>
+    <h3>Children&#x27;s Privacy</h3>
+    <p>The App does not knowingly collect information from children under 13.</p>
+    <h3>Changes</h3>
+    <p>Updates will be posted on this page with a revised date.</p>
+    <h3>Contact</h3>
+    <p><a href="mailto:216bells@arndb.net">216bells@arndb.net</a></p>
+  </div>
 </section>
 
-<!-- ── Support ── -->
+<!-- Support -->
 <section id="support">
-  <h2>Support</h2>
+  <h2 class="lang-de">Support</h2>
+  <h2 class="lang-en">Support</h2>
   <div class="divider"></div>
-
   <div class="features">
     <div class="feature-card">
-      <div class="feature-icon">✉️</div>
-      <h3>Contact</h3>
-      <p>For bug reports, feature requests, or any questions write to <a href="mailto:216bells@arndb.net" style="color:var(--gold);">216bells@arndb.net</a>.</p>
+      <div class="feature-icon">&#9993;</div>
+      <h3 class="lang-de">Kontakt</h3><h3 class="lang-en">Contact</h3>
+      <p class="lang-de">Fehler, W&uuml;nsche oder Fragen: <a href="mailto:216bells@arndb.net" style="color:var(--gold)">216bells@arndb.net</a></p>
+      <p class="lang-en">Bug reports, feature requests or questions: <a href="mailto:216bells@arndb.net" style="color:var(--gold)">216bells@arndb.net</a></p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">📖</div>
-      <h3>Ship's Bells Explained</h3>
-      <p>A nautical day is divided into six 4-hour watches. Each half-hour within a watch is marked by one additional bell strike, up to 8 bells at the end.</p>
+      <div class="feature-icon">&#128214;</div>
+      <h3 class="lang-de">Glasen erkl&auml;rt</h3><h3 class="lang-en">Ship&#x27;s Bells Explained</h3>
+      <p class="lang-de">Ein Seetag besteht aus sechs 4-Stunden-Wachen. Jede halbe Stunde wird durch einen zus&auml;tzlichen Glockenschlag angezeigt, bis maximal 8 am Wachenende.</p>
+      <p class="lang-en">A nautical day has six 4-hour watches. Each half-hour is marked by one additional bell strike, up to 8 at the watch end.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🔕</div>
-      <h3>Quiet Mode</h3>
-      <p>Enable <em>Quiet Mode</em> in Settings to silence all bell sounds and notifications instantly. Use <em>Quiet Hours</em> for a scheduled time window.</p>
+      <div class="feature-icon">&#128277;</div>
+      <h3 class="lang-de">Ruhemodus</h3><h3 class="lang-en">Quiet Mode</h3>
+      <p class="lang-de"><em>Ruhemodus</em> in den Einstellungen schaltet alle T&ouml;ne sofort ab. <em>Ruhezeit</em> erm&ouml;glicht zeitgesteuerte Stille.</p>
+      <p class="lang-en">Enable <em>Quiet Mode</em> in Settings to silence all sounds instantly. Use <em>Quiet Hours</em> for a scheduled window.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🆘</div>
-      <h3>SOS Signal</h3>
-      <p>Press and hold the clock face for 3 seconds to activate the SOS Morse light signal. Tap anywhere to stop, or it stops automatically after 5 minutes.</p>
+      <div class="feature-icon">&#128682;</div>
+      <h3>SOS</h3>
+      <p class="lang-de">Zifferblatt 3 Sekunden halten &#8594; SOS-Morsesignal. Antippen zum Stoppen oder automatischer Stopp nach 5 Minuten.</p>
+      <p class="lang-en">Hold the clock face 3 seconds &#8594; SOS Morse signal. Tap anywhere to stop or auto-stops after 5 minutes.</p>
     </div>
+  </div>
+</section>
+
+<!-- Impressum — always German, § 5 TMG -->
+<section id="impressum">
+  <h2>Impressum</h2>
+  <div class="divider"></div>
+  <div class="impressum-box">
+    <p>
+      <span class="label">Angaben gem&auml;&szlig; &sect; 5 TMG</span>
+      Arnd Brockmeier<br>
+      Am Mertenshof 56<br>
+      50859 K&ouml;ln<br>
+      Deutschland
+    </p>
+    <p style="margin-top:1.25rem">
+      <span class="label">Kontakt</span>
+      E-Mail: <a href="mailto:216bells@arndb.net" style="color:var(--gold)">216bells@arndb.net</a>
+    </p>
+    <p style="margin-top:1.25rem">
+      <span class="label">Verantwortlich f&uuml;r den Inhalt nach &sect; 18 Abs. 2 MStV</span>
+      Arnd Brockmeier, Am Mertenshof 56, 50859 K&ouml;ln
+    </p>
+    <p style="margin-top:1.25rem">
+      <span class="label">Hinweis</span>
+      Diese Website dient ausschlie&szlig;lich der Information &uuml;ber die App &bdquo;216 Bells&ldquo; und enth&auml;lt keine journalistisch-redaktionellen Inhalte im Sinne des Medienstaatsvertrags.
+    </p>
+    <p style="margin-top:1.25rem">
+      <span class="label">Haftungsausschluss</span>
+      Als Anbieter bin ich f&uuml;r eigene Inhalte nach den allgemeinen Gesetzen verantwortlich (&sect;&sect; 7&ndash;10 TMG). Bei bekannt werdenden Rechtsverletzungen werden entsprechende Inhalte umgehend entfernt.
+    </p>
   </div>
 </section>
 
 <footer>
   <p>
-    &copy; 2026 Arnd Brockmeier &nbsp;·&nbsp;
-    <a href="#privacy">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="mailto:216bells@arndb.net">Support</a>
+    &copy; 2026 Arnd Brockmeier &nbsp;&middot;&nbsp;
+    <a href="#privacy" class="lang-de">Datenschutz</a><a href="#privacy" class="lang-en">Privacy</a>
+    &nbsp;&middot;&nbsp;
+    <a href="#impressum">Impressum</a>
+    &nbsp;&middot;&nbsp;
+    <a href="mailto:216bells@arndb.net">216bells@arndb.net</a>
   </p>
 </footer>
 
+<script>
+  function setLang(lang) {
+    document.body.className = lang;
+    document.documentElement.lang = lang;
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    localStorage.setItem('216bells-lang', lang);
+  }
+  var saved = localStorage.getItem('216bells-lang');
+  if (saved === 'en') setLang('en');
+</script>
 </body>
 </html>
