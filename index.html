@@ -50,11 +50,10 @@
     }
     .hero-icon {
       width: 120px; height: 120px; border-radius: 26px;
-      background: linear-gradient(145deg, #1a3060, var(--navy));
-      border: 2px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 2rem; box-shadow: 0 8px 40px rgba(200,162,64,.15); font-size: 3.5rem;
+      overflow: hidden;
+      margin-bottom: 2rem; box-shadow: 0 8px 40px rgba(200,162,64,.15);
     }
+    .hero-icon img { width: 100%; height: 100%; display: block; }
     .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); color: var(--gold2); letter-spacing: .06em; margin-bottom: .5rem; }
     .hero-sub { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--muted); letter-spacing: .04em; margin-bottom: 2.5rem; font-style: italic; }
     .badge-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
@@ -117,7 +116,7 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-icon">&#9875;</div>
+  <div class="hero-icon"><img src="icon.png" alt="216 Bells App Icon" /></div>
   <h1>216 Bells</h1>
   <p class="hero-sub lang-de">Eine traditionelle Schiffsuhr f&uuml;r iPhone</p>
   <p class="hero-sub lang-en">A Traditional Ship&#x27;s Clock for iPhone</p>
