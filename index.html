@@ -93,7 +93,40 @@
     body.en .lang-de { display: none; }
     body.en .lang-en { display: revert; }
 
-    @media (max-width: 600px) { .nav-links { display: none; } }
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px; margin-left: .5rem;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--gold); border-radius: 2px; transition: all .25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 56px; left: 0; right: 0; z-index: 99;
+      background: rgba(10,22,40,0.97); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column; padding: .5rem 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text); text-decoration: none; font-size: 1rem;
+      padding: .85rem 2rem; letter-spacing: .04em;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .lang-row {
+      display: flex; gap: 8px; padding: .85rem 2rem;
+    }
+
+    @media (max-width: 650px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
   </style>
 </head>
 <body class="de">
@@ -111,8 +144,26 @@
       <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
       <button class="lang-btn"        id="btn-en" onclick="setLang('en')">EN</button>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menü" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#features" class="lang-de" onclick="closeMenu()">Funktionen</a>
+  <a href="#features" class="lang-en" onclick="closeMenu()">Features</a>
+  <a href="#privacy"  class="lang-de" onclick="closeMenu()">Datenschutz</a>
+  <a href="#privacy"  class="lang-en" onclick="closeMenu()">Privacy</a>
+  <a href="#support"  onclick="closeMenu()" class="lang-de">Support</a>
+  <a href="#support"  onclick="closeMenu()" class="lang-en">Support</a>
+  <a href="#impressum" onclick="closeMenu()">Impressum</a>
+  <div class="lang-row">
+    <button class="lang-btn active" id="mbtn-de" onclick="setLang('de')">DE</button>
+    <button class="lang-btn"        id="mbtn-en" onclick="setLang('en')">EN</button>
+  </div>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -339,10 +390,32 @@
   function setLang(lang) {
     document.body.className = lang;
     document.documentElement.lang = lang;
-    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    ['btn-de','mbtn-de'].forEach(function(id){ document.getElementById(id).classList.toggle('active', lang === 'de'); });
+    ['btn-en','mbtn-en'].forEach(function(id){ document.getElementById(id).classList.toggle('active', lang === 'en'); });
     localStorage.setItem('216bells-lang', lang);
   }
+
+  function toggleMenu() {
+    var m = document.getElementById('mobile-menu');
+    var h = document.getElementById('hamburger');
+    var open = m.classList.toggle('open');
+    h.classList.toggle('open', open);
+    h.setAttribute('aria-expanded', open);
+  }
+
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  document.addEventListener('click', function(e) {
+    var menu = document.getElementById('mobile-menu');
+    var btn  = document.getElementById('hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
   var saved = localStorage.getItem('216bells-lang');
   if (saved === 'en') setLang('en');
 
