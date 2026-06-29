@@ -119,9 +119,6 @@
     }
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu a:hover { color: var(--gold); }
-    .mobile-menu .lang-row {
-      display: flex; gap: 8px; padding: .85rem 2rem;
-    }
 
     @media (max-width: 650px) {
       .nav-links { display: none; }
@@ -159,10 +156,6 @@
   <a href="#support"  onclick="closeMenu()" class="lang-de">Support</a>
   <a href="#support"  onclick="closeMenu()" class="lang-en">Support</a>
   <a href="#impressum" onclick="closeMenu()">Impressum</a>
-  <div class="lang-row">
-    <button class="lang-btn active" id="mbtn-de" onclick="setLang('de')">DE</button>
-    <button class="lang-btn"        id="mbtn-en" onclick="setLang('en')">EN</button>
-  </div>
 </div>
 
 <!-- Hero -->
@@ -390,8 +383,8 @@
   function setLang(lang) {
     document.body.className = lang;
     document.documentElement.lang = lang;
-    ['btn-de','mbtn-de'].forEach(function(id){ document.getElementById(id).classList.toggle('active', lang === 'de'); });
-    ['btn-en','mbtn-en'].forEach(function(id){ document.getElementById(id).classList.toggle('active', lang === 'en'); });
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     localStorage.setItem('216bells-lang', lang);
   }
 
