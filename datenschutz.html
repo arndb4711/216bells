@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutz · 216 Bells</title>
+  <meta name="description" content="Datenschutzerklärung / Privacy Policy für die 216 Bells App." />
+  <style>
+    :root {
+      --navy:   #0A1628;
+      --navy2:  #112244;
+      --gold:   #C8A240;
+      --gold2:  #E8C050;
+      --text:   #D4C4A0;
+      --muted:  #7A6A50;
+      --card:   rgba(255,255,255,0.04);
+      --border: rgba(200,162,64,0.2);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,22,40,0.92); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 56px;
+    }
+    .nav-brand {
+      color: var(--gold); font-size: 1.1rem;
+      letter-spacing: .08em; text-decoration: none;
+    }
+    .nav-back {
+      color: var(--muted); font-size: 0.85rem;
+      text-decoration: none; letter-spacing: .05em;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 5.5rem 1.5rem 5rem;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .app-mark {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 0.78rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: normal;
+      color: var(--gold2);
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+      text-wrap: balance;
+    }
+    .meta { font-size: 0.8rem; color: var(--muted); letter-spacing: .05em; }
+
+    section {
+      margin-bottom: 2.25rem;
+      padding-bottom: 2.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    h2 {
+      font-size: 0.78rem;
+      font-weight: normal;
+      color: var(--gold);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    p { margin-bottom: 0.9rem; }
+    p:last-child { margin-bottom: 0; }
+
+    ul { list-style: none; padding: 0; margin-bottom: 0.9rem; }
+    ul li {
+      padding-left: 1.4rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+    ul li strong { color: var(--text); }
+
+    a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(200,162,64,0.35); }
+    a:hover { border-color: var(--gold); }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .contact-card strong { display: block; color: var(--text); margin-bottom: 0.2rem; }
+
+    .lang-divider {
+      display: flex; align-items: center; gap: 1rem;
+      margin: 3rem 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .lang-divider::before, .lang-divider::after {
+      content: ""; flex: 1; height: 1px; background: var(--border);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    footer a { color: var(--muted); border-bottom-color: transparent; }
+    footer a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="index.html">🔔 216 Bells</a>
+    <a class="nav-back" href="index.html">← Zurück</a>
+  </nav>
+
+  <div class="wrap">
+
+    <header>
+      <div class="app-mark">🔔 216 Bells</div>
+      <h1>Datenschutzerklärung<br>Privacy Policy</h1>
+      <p class="meta">Zuletzt aktualisiert · Last updated: Juli 2025</p>
+    </header>
+
+    <!-- ══ DEUTSCH ══ -->
+
+    <section>
+      <h2>Überblick</h2>
+      <p>216 Bells ist eine maritime Schiffsuhr für iPhone. Der Schutz deiner Daten ist uns wichtig. Diese Erklärung beschreibt, welche Daten die App verwendet und warum.</p>
+    </section>
+
+    <section>
+      <h2>Erhobene Daten</h2>
+      <p>216 Bells erhebt keine personenbezogenen Daten und überträgt keine Informationen an externe Server oder Dritte.</p>
+      <p>Die App verwendet folgende Gerätefunktionen:</p>
+      <ul>
+        <li><strong>Standort (GPS)</strong> — zur Anzeige von Kompassrichtung, GPS-Koordinaten, Sonnenauf- und -untergang sowie Gezeitendaten. Der Standort wird ausschließlich lokal auf dem Gerät verarbeitet und nicht gespeichert oder weitergegeben.</li>
+        <li><strong>Benachrichtigungen</strong> — für die Glasen-Schläge alle 30 Minuten. Benachrichtigungen werden lokal auf dem Gerät geplant, ohne Serververbindung.</li>
+        <li><strong>Wetterdaten</strong> — die App ruft anonymisiert Wetterdaten vom öffentlichen Dienst Open-Meteo (open-meteo.com) ab. Dabei wird der ungefähre Standort übermittelt, jedoch kein Nutzeridentifikator.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Datenweitergabe</h2>
+      <p>216 Bells gibt keine Daten an Dritte weiter. Es gibt keine Werbung, kein Tracking und keine Analyse-Dienste.</p>
+    </section>
+
+    <section>
+      <h2>Datenspeicherung</h2>
+      <p>Einstellungen (z. B. Ruhezeit, Sprache) werden ausschließlich lokal auf deinem Gerät in den App-Einstellungen gespeichert. Eine Löschung erfolgt durch Deinstallation der App.</p>
+    </section>
+
+    <section>
+      <h2>Kontakt</h2>
+      <div class="contact-card">
+        <strong>Arnd Brockmeier</strong>
+        Bei Fragen zum Datenschutz:<br>
+        <a href="mailto:216bells@arndb.net">216bells@arndb.net</a>
+      </div>
+    </section>
+
+    <div class="lang-divider">English</div>
+
+    <!-- ══ ENGLISH ══ -->
+
+    <section>
+      <h2>Overview</h2>
+      <p>216 Bells is a maritime ship's clock for iPhone. Your privacy matters. This policy describes what data the app uses and why.</p>
+    </section>
+
+    <section>
+      <h2>Data Collected</h2>
+      <p>216 Bells does not collect personal data and does not transmit any information to external servers or third parties.</p>
+      <p>The app uses the following device features:</p>
+      <ul>
+        <li><strong>Location (GPS)</strong> — to display compass bearing, GPS coordinates, sunrise/sunset, and tide data. Location is processed locally on the device only and is never stored or shared.</li>
+        <li><strong>Notifications</strong> — for the bell strikes every 30 minutes. Notifications are scheduled locally on the device with no server connection.</li>
+        <li><strong>Weather data</strong> — the app anonymously fetches weather data from the public service Open-Meteo (open-meteo.com). The approximate location is transmitted, but no user identifier.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Data Sharing</h2>
+      <p>216 Bells does not share data with third parties. There is no advertising, no tracking, and no analytics.</p>
+    </section>
+
+    <section>
+      <h2>Data Storage</h2>
+      <p>Settings (e.g. quiet hours, language) are stored locally on your device in app preferences. Data is removed by uninstalling the app.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <div class="contact-card">
+        <strong>Arnd Brockmeier</strong>
+        Privacy questions:<br>
+        <a href="mailto:216bells@arndb.net">216bells@arndb.net</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <a href="index.html">216 Bells</a> &nbsp;·&nbsp; <a href="mailto:216bells@arndb.net">216bells@arndb.net</a>
+  </footer>
+
+</body>
+</html>
